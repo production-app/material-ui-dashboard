@@ -19,7 +19,7 @@ jobs:
         run: npm install
       - name: Deploy to GH Pages
         run: |
-          git config --global user.email ${{secrets.EMAIL}}
-          git config --global user.name ${{secrets.USERNAME}}
-          git remote set-url origin https://${{serects.ACCESS_TOKEN}}@github.com/${{secrets.USERNAME}}/material-ui-dashboard.git
+          git config --global user.email "developerbiodun@gmail.com"
+          git config --global user.name "production-app"
+          git remote set-url origin https://cbdf44ac015a2cc1698a215f324067f6c007577a@github.com/production-app/material-ui-dashboard.git
           npm run deploy
