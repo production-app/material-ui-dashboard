@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/material-ui-dashboard/static/css/main.c9bcfb4c.chunk.css",
-    "main.js": "/material-ui-dashboard/static/js/main.90f0c1c0.chunk.js",
-    "main.js.map": "/material-ui-dashboard/static/js/main.90f0c1c0.chunk.js.map",
+    "main.js": "/material-ui-dashboard/static/js/main.1740aafe.chunk.js",
+    "main.js.map": "/material-ui-dashboard/static/js/main.1740aafe.chunk.js.map",
     "runtime-main.js": "/material-ui-dashboard/static/js/runtime-main.0b2fdc6d.js",
     "runtime-main.js.map": "/material-ui-dashboard/static/js/runtime-main.0b2fdc6d.js.map",
     "static/css/2.d0176e96.chunk.css": "/material-ui-dashboard/static/css/2.d0176e96.chunk.css",
     "static/js/2.122bd263.chunk.js": "/material-ui-dashboard/static/js/2.122bd263.chunk.js",
     "static/js/2.122bd263.chunk.js.map": "/material-ui-dashboard/static/js/2.122bd263.chunk.js.map",
     "index.html": "/material-ui-dashboard/index.html",
-    "precache-manifest.429f938a8ad2c4de5f7eaede8bbe02b2.js": "/material-ui-dashboard/precache-manifest.429f938a8ad2c4de5f7eaede8bbe02b2.js",
+    "precache-manifest.beb495e7dbd0e56e6f9b212251aaf74d.js": "/material-ui-dashboard/precache-manifest.beb495e7dbd0e56e6f9b212251aaf74d.js",
     "service-worker.js": "/material-ui-dashboard/service-worker.js",
     "static/css/2.d0176e96.chunk.css.map": "/material-ui-dashboard/static/css/2.d0176e96.chunk.css.map",
     "static/css/main.c9bcfb4c.chunk.css.map": "/material-ui-dashboard/static/css/main.c9bcfb4c.chunk.css.map",
@@ -25,6 +25,6 @@
     "static/css/2.d0176e96.chunk.css",
     "static/js/2.122bd263.chunk.js",
     "static/css/main.c9bcfb4c.chunk.css",
-    "static/js/main.90f0c1c0.chunk.js"
+    "static/js/main.1740aafe.chunk.js"
   ]
 }
