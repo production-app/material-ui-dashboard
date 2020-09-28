@@ -1,0 +1,71 @@
+.selectCountries {
+  margin-top: 1rem !important;
+  width: 50%;
+}
+
+.selection {
+  width: 50%;
+}
+
+.MuiListItem-root.Mui-selected,
+.MuiListItem-root.Mui-selected:hover {
+  background-color: #942bae !important;
+  color: white !important;
+}
+.MuiListItem-button {
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.MuiPickersToolbar-toolbar {
+  background-color: #932aad !important;
+}
+
+.MuiPickersDay-daySelected {
+  background-color: #932aad !important;
+}
+
+.inputStyle {
+  margin-top: 1rem !important;
+  width: 100% !important;
+}
+
+.inputFile {
+  opacity: -2 !important;
+}
+
+.inputStyleDate {
+  margin-top: 21px !important;
+}
+.MuiInput-underline:after {
+  border-bottom: 2px solid #9128ac !important;
+  pointer-events: none;
+}
+
+.MuiFormLabel-root.Mui-focused {
+  color: #aaaaaa !important;
+}
+
+.MuiInput-underline.Mui-focused::after {
+  transform: scaleX(1) !important;
+}
+
+.text-input {
+  margin-top: 2rem;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #777777;
+  height: 20px;
+}
+.MuiCircularProgress-root {
+  display: block !important;
+  color: #62b866 !important;
+  margin: auto !important;
+}
+
+.makeStyles-cardAvatarProfile-118 {
+  margin: -11px auto 0 !important;
+}
+
+.cardAvatarProfiles {
+  margin: -19px auto 0 !important;
+  border: 3px solid rgb(149, 44, 175) !important;
+}

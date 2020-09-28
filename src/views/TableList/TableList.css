@@ -1,0 +1,35 @@
+.MuiTableRow-root:hover {
+  background: rgba(147, 41, 173, 0.801) !important;
+  cursor: pointer !important;
+  color: white;
+  font-weight: 500;
+}
+.MuiSvgIcon-root:hover {
+  color: white !important;
+}
+
+.MuiTableRow-footer:hover {
+  background: none !important;
+  cursor: pointer !important;
+  color: black;
+}
+
+.App {
+  display: none;
+}
+
+/* .MuiPaper-elevation24 {
+  box-shadow: none !important;
+}
+
+.MuiPaper-root {
+  background-color: transparent !important;
+}
+
+.MuiDialog-paper {
+  overflow-y: inherit !important;
+}
+
+.makeStyles-cardBody-114 {
+  padding: 1.9rem 47px !important;
+} */
