@@ -205,6 +205,8 @@ function UserProfile({
               avatarUrl: imageUrl,
             });
 
+            imageGetter("");
+
             getData({
               email,
               phone: phoneNumber,
