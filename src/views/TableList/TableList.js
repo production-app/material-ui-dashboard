@@ -93,7 +93,7 @@ const styles = {
 };
 
 const api = axios.create({
-  baseURL: `https://strapi-resources.herokuapp.com/profiles/`,
+  baseURL: `https://strapi-resources.ew.r.appspot.com/profiles/`,
 });
 
 function validateEmail(email) {

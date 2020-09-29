@@ -45,7 +45,7 @@ export const postProfile = (profile) => {
     //   });
 
     axios
-      .post("https://strapi-resources.herokuapp.com/profiles/", {
+      .post("https://strapi-resources.ew.r.appspot.com/profiles/", {
         name,
         country,
         email,
