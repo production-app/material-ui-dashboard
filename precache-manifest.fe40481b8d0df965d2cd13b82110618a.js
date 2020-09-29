@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c0b2950b9e1ec231f2c7bd300f0de8f4",
+    "revision": "2acec2caca335e39a83560d6060f41c7",
     "url": "/material-ui-dashboard/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/material-ui-dashboard/static/css/2.d0176e96.chunk.css"
   },
   {
-    "revision": "f94875eb007b4ddf2c22",
+    "revision": "cf7ffa0a7277dcc7551f",
     "url": "/material-ui-dashboard/static/css/main.c9bcfb4c.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/material-ui-dashboard/static/js/2.122bd263.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f94875eb007b4ddf2c22",
-    "url": "/material-ui-dashboard/static/js/main.1740aafe.chunk.js"
+    "revision": "cf7ffa0a7277dcc7551f",
+    "url": "/material-ui-dashboard/static/js/main.83ad15e0.chunk.js"
   },
   {
     "revision": "11863561b0a590ea6a39",
