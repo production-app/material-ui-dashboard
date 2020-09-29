@@ -16,13 +16,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install Packages
-        commands: unset CI
         run: |
           npm install
           npm run build
       - name: Deploy to GH Pages 🚀
         run: |
+          npm run deploy
           git config --global user.email "developerbiodun@gmail.com"
           git config --global user.name "production-app"
           git remote set-url origin https://production-app:cbdf44ac015a2cc1698a215f324067f6c007577a@github.com/production-app/material-ui-dashboard.git
-          npm run deploy
