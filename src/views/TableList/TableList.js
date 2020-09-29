@@ -118,11 +118,11 @@ function TableList({ getData, location, giveData, history }) {
   const [assignedN, setAssignedN] = React.useState({});
   const classes = useStyles();
 
-  if (location.state === null) {
-    console.log("jkvf");
-  } else {
-    console.log(location.state);
-  }
+  // if (location.state === null) {
+  //   console.log("jkvf");
+  // } else {
+  //   console.log(location.state);
+  // }
 
   var columns = [
     {
@@ -332,7 +332,7 @@ function TableList({ getData, location, giveData, history }) {
                 }}
                 options={{
                   selection: true,
-                  loadingType: "linear",
+                  // loadingType: "linear",
                 }}
                 actions={[
                   {
