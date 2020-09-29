@@ -114,19 +114,6 @@ function UserProfile({
     setButtonShow(true);
   };
 
-  // const [selectedDate, setSelectedDate] = React.useState(
-  //   new Date("2014-08-18T21:11:54")
-  // );
-  // const handleDateChange = (date) => {
-  //   setSelectedDate(date);
-  // };
-  // const initialValues = {
-  //   name: "",
-  // };
-  // const handleSubmit = (value) => {
-  //   alert(JSON.stringify(value));
-  // };
-
   let color = "#a23db7";
 
   const [phoneNumber, setPhone] = React.useState("");
