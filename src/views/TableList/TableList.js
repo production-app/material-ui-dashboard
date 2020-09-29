@@ -118,12 +118,6 @@ function TableList({ getData, location, giveData, history }) {
   const [assignedN, setAssignedN] = React.useState({});
   const classes = useStyles();
 
-  // if (location.state === null) {
-  //   console.log("jkvf");
-  // } else {
-  //   console.log(location.state);
-  // }
-
   var columns = [
     {
       title: "Picture",

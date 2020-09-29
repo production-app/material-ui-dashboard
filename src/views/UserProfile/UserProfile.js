@@ -76,24 +76,6 @@ const styles = {
   },
 };
 
-// const phoneNumberMask = [
-//   "(",
-//   /[070|080|090|081]/,
-//   /\d/,
-//   /\d/,
-//   ")",
-//   " ",
-//   /\d/,
-//   /\d/,
-//   /\d/,
-//   "-",
-//   /\d/,
-//   /\d/,
-//   /\d/,
-//   /\d/,
-//   /\d/,
-// ];
-
 const useStyles = makeStyles(styles);
 
 function UserProfile({
