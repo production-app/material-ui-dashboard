@@ -16,9 +16,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install Packages
-        run: |
-          npm install
-          npm run build
+        run: npm install
       - name: Deploy to GH Pages 🚀
         uses: JamesIves/github-pages-deploy-action@3.6.2
         run: |
