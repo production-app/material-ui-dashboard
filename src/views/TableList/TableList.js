@@ -93,7 +93,7 @@ const styles = {
 };
 
 const api = axios.create({
-  baseURL: `https://strapi-resources.ew.r.appspot.com/profiles/`,
+  baseURL: `https://strapi-resources.herokuapp.com/profiles/`,
 });
 
 function validateEmail(email) {
@@ -116,6 +116,7 @@ function TableList({ getData, location, giveData, history }) {
   const [value, setValue] = React.useState(0);
   const [deleteNotification, setDeleteNotification] = React.useState(false);
   const [assignedN, setAssignedN] = React.useState({});
+  const [isLoading, setIsLoading] = React.useState(true);
   const classes = useStyles();
 
   var columns = [
@@ -151,6 +152,9 @@ function TableList({ getData, location, giveData, history }) {
       .get("/")
       .then((res) => {
         setData(res.data);
+        if (res.data) {
+          setIsLoading(false);
+        }
       })
       .catch((error) => {
         console.log("Error");
@@ -159,6 +163,7 @@ function TableList({ getData, location, giveData, history }) {
   }, []);
 
   const handleDeleteRows = (event, rowData, resolve) => {
+    setIsLoading(true);
     let _data = [...data];
     setDeleteNotification(true);
 
@@ -170,7 +175,9 @@ function TableList({ getData, location, giveData, history }) {
           const dataDelete = [...data];
           const index = rowData.tableData.id;
           dataDelete.splice(index, 1);
+
           setData([...dataDelete]);
+
           //resolve();
         })
         .catch((error) => {
@@ -181,8 +188,14 @@ function TableList({ getData, location, giveData, history }) {
 
       _data = _data.filter((t) => t.tableData.id !== rd.tableData.id);
     });
-    //console.log(_data);
+
     setData(_data);
+
+    const count = rowData.length;
+    setTimeout(() => {
+      console.log(typeof rowData.length);
+      setIsLoading(false);
+    }, 1000 * count);
   };
 
   const handleRowUpdate = (newData, oldData, resolve) => {
@@ -296,16 +309,17 @@ function TableList({ getData, location, giveData, history }) {
               <>
                 {" "}
                 <Users name={location.state} />
-                {deleteNotification ? <DeleteUser /> : " "}
+                {(deleteNotification && <DeleteUser />) || " "}
               </>
             </div>
 
-            <CardBody>
+            <CardBody data-test="tableContent">
               <MaterialTable
                 tableRef={tableRef}
                 title="Profile"
                 columns={columns}
                 data={data}
+                isLoading={isLoading}
                 icons={tableIcons}
                 editable={{
                   //   onRowUpdate: (newData, oldData) =>
