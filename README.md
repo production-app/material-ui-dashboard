@@ -1,4 +1,4 @@
-![Product Gif](src/assets/github/m2.webm)
+![Product Gif](src/assets/github/m2.gif)
 
 ## Simple Dashboard CRUD Application ❤️ ❤️ ❤️
 
@@ -36,13 +36,13 @@ Built on ReactJS (Frontend) / NodeJS (Backend) 🚀 🔥
 
 🔥 Table List
 
-1️ Pagination - To ranges the table lists
+1. Pagination - To range the table lists
 
-2. Searching - To query result
+2. Searching - To query the result
 
-3. Sorting - To the by ascending or descending order
+3. Sorting - To arrange the result in ascending or descending order
 
-4. Selection - To grouped the selection and apply actions
+4. Selection - To group the selection of an item and apply action
 
 5. Refresh
 
