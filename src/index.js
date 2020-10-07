@@ -26,18 +26,21 @@ import RTL from "layouts/RTL.js";
 import { Provider } from "react-redux";
 import "assets/css/material-dashboard-react.css?v=1.9.0";
 import store from "./components/Redux/Store";
+import { ConfirmProvider } from "material-ui-confirm";
 
 const hist = createBrowserHistory();
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={hist}>
-      <Switch>
-        <Route path="/admin" component={Admin} />
-        <Route path="/rtl" component={RTL} />
-        <Redirect from="/" to="/admin/dashboard" />
-      </Switch>
-    </Router>
+    <ConfirmProvider>
+      <Router history={hist}>
+        <Switch>
+          <Route path="/admin" component={Admin} />
+          <Route path="/rtl" component={RTL} />
+          <Redirect from="/" to="/admin/dashboard" />
+        </Switch>
+      </Router>
+    </ConfirmProvider>
   </Provider>,
   document.getElementById("root")
 );

@@ -26,7 +26,7 @@ import SaveAlt from "@material-ui/icons/SaveAlt";
 import Search from "@material-ui/icons/Search";
 import ViewColumn from "@material-ui/icons/ViewColumn";
 import axios from "axios";
-import Alert from "@material-ui/lab/Alert";
+
 import RefreshIcon from "@material-ui/icons/Refresh";
 import { forwardRef } from "react";
 import { SnackbarProvider } from "notistack";
@@ -37,6 +37,7 @@ import {
 
 import { getDataSuccess } from "../../components/Redux/GetData/getDataAction";
 import { connect } from "react-redux";
+import { useConfirm } from "material-ui-confirm";
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -106,6 +107,8 @@ const useStyles = makeStyles(styles);
 function TableList({ getData, location, giveData, history }) {
   const tableRef = React.createRef();
 
+  const confirm = useConfirm();
+
   React.useEffect(() => {
     if (window.performance) {
       if (performance.navigation.type == 1) {
@@ -163,39 +166,43 @@ function TableList({ getData, location, giveData, history }) {
   }, []);
 
   const handleDeleteRows = (event, rowData, resolve) => {
-    setIsLoading(true);
-    let _data = [...data];
-    setDeleteNotification(true);
+    confirm({
+      description: `This will permanently delete the records. `,
+    }).then(() => {
+      setIsLoading(true);
+      let _data = [...data];
+      setDeleteNotification(true);
 
-    rowData.forEach((rd) => {
-      api
-        .delete("/" + rd.id)
+      rowData.forEach((rd) => {
+        api
+          .delete("/" + rd.id)
 
-        .then((res) => {
-          const dataDelete = [...data];
-          const index = rowData.tableData.id;
-          dataDelete.splice(index, 1);
+          .then((res) => {
+            const dataDelete = [...data];
+            const index = rowData.tableData.id;
+            dataDelete.splice(index, 1);
 
-          setData([...dataDelete]);
+            setData([...dataDelete]);
 
-          //resolve();
-        })
-        .catch((error) => {
-          setErrorMessages(["Delete failed! Server error"]);
-          setIserror(true);
-          // resolve();
-        });
+            //resolve();
+          })
+          .catch((error) => {
+            setErrorMessages(["Delete failed! Server error"]);
+            setIserror(true);
+            // resolve();
+          });
 
-      _data = _data.filter((t) => t.tableData.id !== rd.tableData.id);
+        _data = _data.filter((t) => t.tableData.id !== rd.tableData.id);
+      });
+
+      setData(_data);
+
+      const count = rowData.length;
+      setTimeout(() => {
+        console.log(typeof rowData.length);
+        setIsLoading(false);
+      }, 1000 * count);
     });
-
-    setData(_data);
-
-    const count = rowData.length;
-    setTimeout(() => {
-      console.log(typeof rowData.length);
-      setIsLoading(false);
-    }, 1000 * count);
   };
 
   const handleRowUpdate = (newData, oldData, resolve) => {

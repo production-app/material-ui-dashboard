@@ -13,34 +13,18 @@ import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 import DateFnsUtils from "@date-io/date-fns";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { Redirect } from "react-router-dom";
-
-import MaskedInput from "react-text-mask";
-
+import { useConfirm } from "material-ui-confirm";
 //Formik Material UI
-import MuiTextField from "@material-ui/core/TextField";
-import {
-  fieldToTextField,
-  TextField,
-  SimpleFileUpload,
-} from "formik-material-ui";
-import {
-  TimePicker,
-  DatePicker,
-  DateTimePicker,
-} from "formik-material-ui-pickers";
 
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker,
-} from "@material-ui/pickers";
+import { TextField } from "formik-material-ui";
+import { DatePicker } from "formik-material-ui-pickers";
+
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { Formik, Form, Field } from "formik";
 import "./UserProfile.css";
 
 import MenuItem from "@material-ui/core/MenuItem";
 
-import avatar from "assets/img/faces/marc.jpg";
-import { CropLandscapeOutlined, EditLocationRounded } from "@material-ui/icons";
 import { getDataSuccess } from "../../components/Redux/GetData/getDataAction";
 
 import { fetchCountries } from "../../components/Redux/Country/CountriesAction";
@@ -115,6 +99,7 @@ function UserProfile({
   };
 
   let color = "#a23db7";
+  const confirm = useConfirm();
 
   const [phoneNumber, setPhone] = React.useState("");
 
@@ -128,12 +113,7 @@ function UserProfile({
           name: "",
           country: "",
           dateofbirth: new Date("1990-08-18"),
-          //file: "",
           avatarUrl: "",
-          // time: new Date(),
-          //dateTime: new Date(),
-          // toggle: [],
-          // autocomplete: [],
         }}
         validate={(values) => {
           const errors = {};
@@ -164,33 +144,36 @@ function UserProfile({
         ) => {
           setTimeout(() => {
             setSubmitting(false);
-            alert("You are about to submit the records");
-            postprofile({
-              email,
-              phone: phoneNumber,
-              country,
-              name,
-              dateofbirth,
-              avatarUrl: imageUrl,
-            });
+            confirm({
+              description: `This will create the record in the Database. `,
+            }).then(() => {
+              postprofile({
+                email,
+                phone: phoneNumber,
+                country,
+                name,
+                dateofbirth,
+                avatarUrl: imageUrl,
+              });
 
-            imageGetter("");
+              imageGetter("");
 
-            getData({
-              email,
-              phone: phoneNumber,
-              country,
-              name,
-              dateofbirth,
-              avatarUrl: imageUrl,
-            });
-            history.push("/admin/table", {
-              email,
-              phone: phoneNumber,
-              country,
-              name,
-              dateofbirth,
-              avatarUrl,
+              getData({
+                email,
+                phone: phoneNumber,
+                country,
+                name,
+                dateofbirth,
+                avatarUrl: imageUrl,
+              });
+              history.push("/admin/table", {
+                email,
+                phone: phoneNumber,
+                country,
+                name,
+                dateofbirth,
+                avatarUrl,
+              });
             });
           }, 3000);
         }}
@@ -265,8 +248,6 @@ function UserProfile({
                               <PhotoCamera />
                             </IconButton>
                           </label>
-
-                          {/* // <Thumb file={values.file} /> */}
                         </GridItem>
                       </GridContainer>
 
@@ -311,28 +292,6 @@ function UserProfile({
                             }}
                             value={phoneNumber}
                           />
-                          {/* <Field
-                            component={TextField}
-                            name="phone"
-                            type="text"
-                            label="Phone"
-                            helperText="Please Enter your Phone Number"
-                            className="inputStyle"
-                            render={({ field }) => (
-                              <MaskedInput
-                                {...field}
-                                mask={phoneNumberMask}
-                                id="phone"
-                                placeholder="Enter your phone number"
-                                type="text"
-                                className={
-                                  errors.phone && touched.phone
-                                    ? "text-input error"
-                                    : "text-input "
-                                }
-                              />
-                            )}
-                          /> */}
                           {errors.phone && touched.phone && (
                             <p className="MuiFormHelperText-root Mui-error MuiFormHelperText-filled">
                               {errors.phone}

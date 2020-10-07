@@ -28,8 +28,11 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardIcon from "components/Card/CardIcon.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
+import { connect } from "react-redux";
 
-import { bugs, website, server } from "variables/general.js";
+import CountUp from "react-countup";
+
+import { fetchUsers } from "../../components/Redux/GetUsers/GetUserAction";
 
 import {
   dailySalesChart,
@@ -41,8 +44,13 @@ import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js"
 
 const useStyles = makeStyles(styles);
 
-export default function Dashboard() {
+function Dashboard({ counts, fetchUserCount }) {
   const classes = useStyles();
+
+  React.useEffect(() => {
+    fetchUserCount();
+  }, []);
+
   return (
     <div>
       <GridContainer>
@@ -76,7 +84,18 @@ export default function Dashboard() {
                 <Store />
               </CardIcon>
               <p className={classes.cardCategory}>Revenue</p>
-              <h3 className={classes.cardTitle}>$34,245</h3>
+              <h3 className={classes.cardTitle}>
+                {" "}
+                <CountUp
+                  start={-0}
+                  end={32245}
+                  duration={5.75}
+                  separator=","
+                  decimals={0}
+                  decimal=""
+                  prefix="$"
+                ></CountUp>
+              </h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>
@@ -93,7 +112,9 @@ export default function Dashboard() {
                 <Icon>info_outline</Icon>
               </CardIcon>
               <p className={classes.cardCategory}>Fixed Issues</p>
-              <h3 className={classes.cardTitle}>75</h3>
+              <h3 className={classes.cardTitle}>
+                <CountUp start={0} end={20} duration={4.75}></CountUp>
+              </h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>
@@ -109,8 +130,15 @@ export default function Dashboard() {
               <CardIcon color="info">
                 <Accessibility />
               </CardIcon>
-              <p className={classes.cardCategory}>Followers</p>
-              <h3 className={classes.cardTitle}>+245</h3>
+              <p className={classes.cardCategory}>Registered Users</p>
+              <h3 className={classes.cardTitle}>
+                <CountUp
+                  start={0}
+                  end={counts}
+                  duration={7.75}
+                  prefix="+"
+                ></CountUp>
+              </h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>
@@ -203,7 +231,15 @@ export default function Dashboard() {
                 <Accessibility />
               </CardIcon>
               <p className={classes.cardCategory}>Users</p>
-              <h3 className={classes.cardTitle}>+245</h3>
+              <h3 className={classes.cardTitle}>
+                {" "}
+                <CountUp
+                  start={0}
+                  end={counts}
+                  duration={3.75}
+                  prefix="+"
+                ></CountUp>
+              </h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>
@@ -217,3 +253,16 @@ export default function Dashboard() {
     </div>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    counts: state.count.count,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchUserCount: () => dispatch(fetchUsers()),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
